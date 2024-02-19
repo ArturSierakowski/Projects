@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" 
+elementFormDefault="qualified">
+    <xs:element name="main">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="author" type="authorType" minOccurs="0" maxOccurs="1" />
+				<xs:element name="section" type="sectionType" minOccurs="0" maxOccurs="unbounded" />				
+				<xs:element name="images" type="imagesType" minOccurs="0" maxOccurs="1" />
+				<xs:element name="media" type="mediaType" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>	
+	</xs:element>
+
+	<xs:complexType name="authorType">
+		<xs:sequence>
+			<xs:element name="name" type="shortStringType" />
+			<xs:element name="surname">
+				<xs:simpleType>
+					<xs:union memberTypes="shortStringType minLengthType" />
+				</xs:simpleType>
+			</xs:element>			
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="shortStringType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="minLengthType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="sectionType">
+		<xs:sequence>
+			<xs:element name="art" type="artType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="drawings" type="drawingsType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="contact" type="contactType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute ref="kind" use="required" />
+	</xs:complexType>
+	
+	<xs:attribute name="kind" type="kindType" />
+		<xs:simpleType name="kindType">
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="content" />
+				<xs:enumeration value="information" />
+			</xs:restriction>
+		</xs:simpleType>
+	
+	<xs:complexType name="artType">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="drawingsType">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1" />			
+			<xs:element name="table" type="tableType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="contactType">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tableType">
+		<xs:sequence>
+			<xs:element name="list" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="drawing" type="xs:string" minOccurs="1" maxOccurs="5" />
+                    </xs:sequence>
+                    <xs:attribute name="order" type="orderType" />
+                </xs:complexType>
+            </xs:element>            
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:unsignedByte" use="required"/>
+	</xs:complexType>	
+	
+	 <xs:simpleType name="orderType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="dates|alphabetical" />
+        </xs:restriction>
+    </xs:simpleType>
+	
+	<xs:complexType name="imagesType">
+        <xs:sequence>
+          <xs:element name="image" type="imageType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+		
+		<xs:complexType name="imageType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="source" type="xs:anyURI" use="required" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="image" type="imageType" />
+	
+	<xs:complexType name="mediaType">
+        <xs:sequence>
+           <xs:element name="links" type="linksType" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+		
+	<xs:complexType name="linksType">
+		<xs:sequence>
+			<xs:element ref="link" minOccurs="3" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="linkType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="important" type="importantType" use="required" />
+				<xs:attribute name="source" type="xs:anyURI" use="required" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="link" type="linkType" />
+
+	<xs:simpleType name="importantType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="yes|no" />
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

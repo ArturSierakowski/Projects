@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="main">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="author">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string" />
+							<xs:element name="surname" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element maxOccurs="unbounded" name="section">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" name="drawings">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="title" type="xs:string" />
+										<xs:element name="table">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="list">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element maxOccurs="unbounded" name="drawing" type="xs:string" />
+															</xs:sequence>
+															<xs:attribute name="order" type="xs:string" use="required" />
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="id" type="xs:unsignedByte" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element minOccurs="0" name="art">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="title" type="xs:string" />
+										<xs:element name="text" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element minOccurs="0" name="contact">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="title" type="xs:string" />
+										<xs:element name="text" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="kind" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="images">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="image">
+								<xs:complexType>
+									<xs:attribute name="source" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="media">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="links">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="link">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="important" type="xs:string" use="required" />
+														<xs:attribute name="source" type="xs:string" use="required" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

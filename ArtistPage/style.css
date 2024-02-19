@@ -1,0 +1,282 @@
+﻿body {
+    margin: 0;
+    background-color: #e5dbc0;
+    color: #000;
+    font-size: 20px;
+}
+
+#logo {
+    width: 100%;
+    background-color: #333;
+    font-size: 44px;
+    font-weight: 700;
+    color: #ddd;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    padding-top: 40px;
+    padding-bottom: 40px;  
+}
+
+h1{
+    margin: 0px;
+    font-size: 40px;
+ animation-name: szerokosc;
+    animation-duration: 3s;
+    -webkit-animation-name: szerokosc;
+    -webkit-animation-duration: 3s;
+}
+
+@keyframes szerokosc {
+    0% {
+        width: 800px;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes szerokosc {
+    0% {
+        width: 800px;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+
+nav{
+    background-color: #444;
+    text-align: center;
+}
+
+.menu{ 
+    margin: 0;
+    padding: 16px;
+    font-size: 20px;
+    min-height: 40px;
+    line-height: 200%;
+}
+
+.menu > li{
+    display: inline-block;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-right: 1px dashed #000;
+}
+
+.menu > li:first-child{
+    border-left: 1px dashed #000;
+}
+
+.menu a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #000;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+}
+
+.dropdown-menu a {
+    color: #bbb;
+    padding: 10px;       
+    text-align: left;
+    display: block;      
+}
+
+.dropdown-menu a:hover {
+    background-color: #222;
+    color: #aaa;
+}            
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+#painting{
+    width: 100%;
+    margin-bottom: -5px;
+}
+
+#spis {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 0px;
+    padding: 20px;
+}
+
+ul > li{
+    font-size: 20px;
+    text-transform: uppercase; 
+    font-weight: 700;
+    padding: 10px;
+    letter-spacing: 3px;
+}
+
+.line {
+    background-color: #333;
+    height: 5px;
+    margin: 0;
+}
+
+h2{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#art {
+    color: #000;
+    margin-left: 210px;
+    margin-right: 210px;
+    text-align: justify;
+    padding: 20px;
+}
+
+#gallery {
+    background-color: #d4cab0;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    width: 100%;   
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 20px;
+}
+
+td {
+    border: 2px solid #333;
+    padding: 10px;
+    padding-top: 15px;
+}
+
+.drawing {
+    height: 320px;
+    width: 240px;
+    opacity: 1;
+}
+
+
+.drawing2{
+    height: 720px;
+    width: 540px;
+    margin: 30px;
+}
+
+.drawing:hover {
+    transform: scale(1.10);
+    opacity: 0.9;
+}
+
+.contact {
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.scrollup {
+    width: 64px;
+    height: 64px;
+    text-decoration: none;
+    background: url("img/up.png") no-repeat 0px 0px;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+}
+
+.icons {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.icon {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 50px;
+    margin-left: 220px;
+    margin-bottom: 122px;
+}
+
+.box {
+    margin-left: 380px;
+    padding: 20px;
+}
+
+.button {
+    width: 70px;
+    height: 25px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+footer {
+    background-color: #333;
+    clear: both;
+    color: #ddd;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 1000px) and (min-width: 800px) {
+
+    .container {
+        width: 750px;
+    }
+
+    aside {
+        width: 30%;
+    }
+
+    #main {
+        width: 65%;
+    }
+}
+
+@media (max-width: 800px) and (min-width: 500px) {
+
+    .container {
+        width: 450px;
+    }
+
+    aside,
+    #main {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .container {
+        width: 90%;
+    }
+
+    aside,
+    #main {
+        width: 100%;
+    }
+}
